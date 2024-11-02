@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ModalForm({ isEdit }) {
+export default function ModalForm({ isEdit, toogleModal }) {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -13,6 +13,7 @@ export default function ModalForm({ isEdit }) {
             className="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
+            onClick={toogleModal}
           ></button>
         </div>
         <div className="modal-body">
@@ -27,38 +28,61 @@ export default function ModalForm({ isEdit }) {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="nim">NIM</label>
+              <label htmlFor="nim">Student NIM</label>
+              <input type="text" name="nim" id="nim" className="form-control" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="class">Student Class</label>
               <input
                 type="text"
-                inputMode="numeric"
-                name="nim"
-                id="nim"
-                min="0"
+                name="class"
+                id="class"
                 className="form-control"
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="birthDate">Birth Date</label>
+              <label htmlFor="gender">Student Gender</label>
+              <select class="form-select" name="gender" id="gender">
+                <option selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="famele">Famele</option>
+              </select>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="class">Year Graduation</label>
+              <input
+                type="number"
+                name="year"
+                id="year"
+                className="form-control"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="address">Student Address</label>
+              <input
+                type="text"
+                name="address"
+                id="address"
+                className="form-control"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="birthDate">Student Birth</label>
               <input
                 type="date"
                 name="birthDate"
                 id="birthDate"
-                min="0"
                 className="form-control"
               />
             </div>
-
             <div className="mb-3">
-              <label htmlFor="address">Address</label>
-              <textarea name="address" id="address" className="form-control" />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="guardianName">Guardian Name</label>
+              <label htmlFor="guardian_name">Guardian Name</label>
               <input
                 type="text"
-                name="guardianName"
-                id="guardianName"
+                name="guardian_name"
+                id="guardian_name"
                 className="form-control"
               />
             </div>

@@ -1,20 +1,15 @@
 import React from "react";
 
-export default function TableSiswa({ siswa }) {
+export default function TableSiswa({ siswa, toogleModal }) {
   return (
     <div className="container">
-      <button className="btn btn-success btn-sm mb-3 float-end">
+      <button
+        className="btn btn-success btn-sm mb-3 float-end"
+        onClick={() => toogleModal()}
+      >
         Tambah Siswa
       </button>
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-        data-bs-whatever="@fat"
-      >
-        Open modal for @fat
-      </button>
+
       <table class="table table-dark table-striped">
         <thead>
           <tr>
@@ -35,8 +30,12 @@ export default function TableSiswa({ siswa }) {
               <td>{siswa.class}</td>
               <td>{siswa.gender}</td>
               <td>
-                <button className="btn btn-light btn-sm me-1">
-                  <i class="bi bi-pencil-square"></i> Edit
+                <button
+                  className="btn btn-light btn-sm me-1"
+                  onClick={() => toogleModal(true)}
+                >
+                  <i class="bi bi-pencil-square"></i>
+                  Edit
                 </button>
                 <button className="btn btn-light btn-sm me-1">
                   <i class="=bi bi-trash "></i> Hapus

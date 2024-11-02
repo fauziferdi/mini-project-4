@@ -8,7 +8,7 @@ export default class TableContainer extends Component {
   state = {
     siswa: [],
     isEdit: true,
-    showModal: true,
+    showModal: false,
   };
 
   componentDidMount() {
@@ -21,12 +21,24 @@ export default class TableContainer extends Component {
       });
   }
 
+  toogleModal = (isEdit = false) => {
+    this.setState({
+      isEdit,
+      showModal: !this.state.showModal,
+    });
+  };
+
   render() {
     return (
       <>
         <Navbar />
-        <TableSiswa siswa={this.state.siswa} />
-        {this.state.showModal && <ModalForm isEdit={this.state.isEdit} />}
+        <TableSiswa siswa={this.state.siswa} toogleModal={this.toogleModal} />
+        {this.state.showModal && (
+          <ModalForm
+            isEdit={this.state.isEdit}
+            toogleModal={this.toogleModal}
+          />
+        )}
       </>
     );
   }
