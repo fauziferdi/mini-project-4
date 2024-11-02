@@ -37,22 +37,22 @@ export default function TableSiswa({
               <td>
                 <button
                   className="btn btn-light btn-sm me-1"
+                  onClick={() => toggleDetailModal(siswa.id)}
+                >
+                  <i className="bi bi-eye-fill"></i> Lihat
+                </button>
+                <button
+                  className="btn btn-light btn-sm me-1"
                   onClick={() => toogleModal(true, siswa.id)}
                 >
                   <i className="bi bi-pencil-square"></i>
                   Edit
                 </button>
                 <button
-                  className="btn btn-light btn-sm me-1"
+                  className="btn btn-light btn-sm "
                   onClick={() => deleteSiswa(siswa.id, siswa.name)}
                 >
                   <i className="=bi bi-trash "></i> Hapus
-                </button>
-                <button
-                  className="btn btn-light btn-sm "
-                  onClick={() => toggleDetailModal(siswa.id)}
-                >
-                  <i className="bi bi-eye-fill"></i> Lihat
                 </button>
               </td>
             </tr>

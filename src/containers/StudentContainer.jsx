@@ -6,12 +6,13 @@ import {
   getSiswaById,
   deleteSiswa,
 } from "../utils/api";
+import Swal from "sweetalert2";
 import TableSiswa from "../components/TableSiswa";
 import Navbar from "../components/Navbar";
 import ModalForm from "../components/ModalForm";
 import DetailInfo from "../components/DetailInfo";
 
-export default class TableContainer extends Component {
+export default class StudentContainet extends Component {
   state = {
     form: {
       nim: "",
@@ -101,6 +102,14 @@ export default class TableContainer extends Component {
     addSiswa(data)
       .then((response) => {
         console.log("Siswa berhasil ditambahkan:", response);
+        Swal.fire({
+          icon: "success",
+          title: "Data Siswa berhasil ditambahkan",
+          width: 300,
+          heightAuto: false,
+          showConfirmButton: false,
+          timer: 1000,
+        });
         this.setState({ showModal: false }); // Tutup modal
         this.showAllSiswa(); // Refresh data tabel
       })
@@ -114,16 +123,30 @@ export default class TableContainer extends Component {
           });
           this.setState({ errors: newErrors });
         } else {
+          Swal.fire({
+            icon: "error",
+            title: "Maaf",
+            text: "Anda Gagal Menambah data siswa",
+            width: 300,
+            heightAuto: false,
+          });
           console.error("Gagal menambahkan siswa:", error);
         }
       });
   };
 
   editSiswa = (data, id) => {
-    console.log(id);
     updateSiswa(data, id)
       .then((response) => {
         console.log("Siswa berhasil diperbarui:", response);
+        Swal.fire({
+          icon: "success",
+          title: "Data Siswa berhasil diperbarui",
+          width: 300,
+          heightAuto: false,
+          showConfirmButton: false,
+          timer: 1000,
+        });
         this.setState({ showModal: false });
         this.showAllSiswa();
       })
@@ -137,6 +160,13 @@ export default class TableContainer extends Component {
           });
           this.setState({ errors: newErrors });
         } else {
+          Swal.fire({
+            icon: "error",
+            title: "Maaf",
+            text: "Anda Gagal Meperbarui data siswa",
+            width: 300,
+            heightAuto: false,
+          });
           console.error("Gagal Meperbarui siswa:", error);
         }
       });
@@ -148,10 +178,25 @@ export default class TableContainer extends Component {
       deleteSiswa(id)
         .then((response) => {
           console.log("Siswa berhasil dihapus:", response);
+          Swal.fire({
+            icon: "success",
+            title: "Data Siswa berhasil dihapus",
+            width: 300,
+            heightAuto: false,
+            showConfirmButton: false,
+            timer: 1000,
+          });
           this.showAllSiswa();
         })
         .catch((error) => {
           console.error("Gagal menghapus siswa:", error);
+          Swal.fire({
+            icon: "error",
+            title: "Maaf",
+            text: "Data anda Gagal Terhapus",
+            width: 300,
+            heightAuto: false,
+          });
         });
     }
   };
