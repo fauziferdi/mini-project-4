@@ -4,11 +4,34 @@ import TableSiswa from "../components/TableSiswa";
 import Navbar from "../components/Navbar";
 import ModalForm from "../components/ModalForm";
 
+const newStudent = {
+  name: "bahlilsadsda22222s",
+  class: "XI MIPA 3",
+  year: "2014",
+  nim: "9999929339929",
+  guardian_name: "Siti",
+  birthDate: "2000-12-20",
+  address: "Kebon jeruk Jakarta barat",
+  gender: "male",
+};
+
+const edtStudent = {
+  name: "MUKAISKULIN",
+  class: "XI MIPA 3",
+  year: "2014",
+  nim: "8888888888",
+  guardian_name: "Siti",
+  birthDate: "2000-12-20",
+  address: "Kebon jeruk Jakarta barat",
+  gender: "male",
+};
+
 export default class TableContainer extends Component {
   state = {
     siswa: [],
     isEdit: true,
     showModal: false,
+    siswaId: 1,
   };
 
   componentDidMount() {
@@ -28,18 +51,26 @@ export default class TableContainer extends Component {
     });
   };
 
-  addSiswa = (data) => {
-    addSiswa(data)
+  addSiswa = () => {
+    addSiswa(newStudent)
       .then((response) => {
         console.log("Siswa berhasil ditambahkan:", response);
+        // this.setState({ siswaId: response.data.id });
+        // console.log(this.state.siswaId);
+        this.setState({ siswaId: response.data.id }, () => {
+          // Callback function, dijalankan setelah state diperbarui
+          console.log(this.state.siswaId); // Ini akan menampilkan ID yang benar
+        });
       })
       .catch((error) => {
         console.error("Gagal menambahkan siswa:", error);
       });
   };
 
-  editSiswa = (data, id) => {
-    updateSiswa(data, id)
+  editSiswa = () => {
+    console.log(this.state.siswaId);
+    console.log(edtStudent);
+    updateSiswa(this.state.siswaId, edtStudent)
       .then((response) => {
         console.log("Siswa berhasil diperbarui:", response);
       })

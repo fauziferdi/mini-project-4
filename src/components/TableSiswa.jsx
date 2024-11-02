@@ -10,7 +10,7 @@ export default function TableSiswa({ siswa, toogleModal }) {
         Tambah Siswa
       </button>
 
-      <table class="table table-dark table-striped">
+      <table className="table table-dark table-striped">
         <thead>
           <tr>
             <th scope="col">No</th>
@@ -34,14 +34,14 @@ export default function TableSiswa({ siswa, toogleModal }) {
                   className="btn btn-light btn-sm me-1"
                   onClick={() => toogleModal(true)}
                 >
-                  <i class="bi bi-pencil-square"></i>
+                  <i className="bi bi-pencil-square"></i>
                   Edit
                 </button>
                 <button className="btn btn-light btn-sm me-1">
-                  <i class="=bi bi-trash "></i> Hapus
+                  <i className="=bi bi-trash "></i> Hapus
                 </button>
                 <button className="btn btn-light btn-sm ">
-                  <i class="bi bi-eye-fill"></i> Lihat
+                  <i className="bi bi-eye-fill"></i> Lihat
                 </button>
               </td>
             </tr>
