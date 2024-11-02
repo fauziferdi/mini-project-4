@@ -11,7 +11,7 @@ export default function DetailInfo({ siswa, toggleDetailModal }) {
             className="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-            onClick={toggleDetailModal}
+            onClick={() => toggleDetailModal()}
           ></button>
         </div>
         <div className="modal-body">
