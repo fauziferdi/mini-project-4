@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function TableSiswa({ siswa, toogleModal, deleteSiswa }) {
+export default function TableSiswa({
+  siswa,
+  toogleModal,
+  deleteSiswa,
+  toggleDetailModal,
+}) {
   return (
     <div className="container">
       <button
@@ -43,7 +48,10 @@ export default function TableSiswa({ siswa, toogleModal, deleteSiswa }) {
                 >
                   <i className="=bi bi-trash "></i> Hapus
                 </button>
-                <button className="btn btn-light btn-sm ">
+                <button
+                  className="btn btn-light btn-sm "
+                  onClick={() => toggleDetailModal(siswa.id)}
+                >
                   <i className="bi bi-eye-fill"></i> Lihat
                 </button>
               </td>

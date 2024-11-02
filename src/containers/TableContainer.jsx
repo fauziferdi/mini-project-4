@@ -9,6 +9,7 @@ import {
 import TableSiswa from "../components/TableSiswa";
 import Navbar from "../components/Navbar";
 import ModalForm from "../components/ModalForm";
+import DetailInfo from "../components/DetailInfo";
 
 export default class TableContainer extends Component {
   state = {
@@ -26,6 +27,8 @@ export default class TableContainer extends Component {
     isEdit: true,
     showModal: false,
     errors: {},
+    selectedSiswa: null,
+    showDetailModal: false,
   };
 
   componentDidMount() {
@@ -153,6 +156,27 @@ export default class TableContainer extends Component {
     }
   };
 
+  toggleDetailModal = (siswaId = null) => {
+    if (siswaId) {
+      console.log(siswaId);
+      getSiswaById(siswaId)
+        .then((response) => {
+          this.setState({
+            selectedSiswa: response.data,
+            showDetailModal: !this.state.showDetailModal,
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching siswa:", error);
+        });
+    } else {
+      this.setState({
+        showDetailModal: !this.state.showDetailModal,
+        selectedSiswa: null,
+      });
+    }
+  };
+
   render() {
     return (
       <>
@@ -161,6 +185,7 @@ export default class TableContainer extends Component {
           siswa={this.state.siswa}
           toogleModal={this.toogleModal}
           deleteSiswa={this.deleteSiswa}
+          toggleDetailModal={this.toggleDetailModal}
         />
         {this.state.showModal && (
           <ModalForm
@@ -171,6 +196,12 @@ export default class TableContainer extends Component {
             form={this.state.form}
             handleSubmit={this.handleSubmit}
             errors={this.state.errors}
+          />
+        )}
+        {this.state.showDetailModal && (
+          <DetailInfo
+            toggleDetailModal={this.toggleDetailModal}
+            siswa={this.state.selectedSiswa}
           />
         )}
       </>
