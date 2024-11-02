@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TableSiswa({ siswa, toogleModal }) {
+export default function TableSiswa({ siswa, toogleModal, deleteSiswa }) {
   return (
     <div className="container">
       <button
@@ -32,12 +32,15 @@ export default function TableSiswa({ siswa, toogleModal }) {
               <td>
                 <button
                   className="btn btn-light btn-sm me-1"
-                  onClick={() => toogleModal(true)}
+                  onClick={() => toogleModal(true, siswa.id)}
                 >
                   <i className="bi bi-pencil-square"></i>
                   Edit
                 </button>
-                <button className="btn btn-light btn-sm me-1">
+                <button
+                  className="btn btn-light btn-sm me-1"
+                  onClick={() => deleteSiswa(siswa.id, siswa.name)}
+                >
                   <i className="=bi bi-trash "></i> Hapus
                 </button>
                 <button className="btn btn-light btn-sm ">

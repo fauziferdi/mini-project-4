@@ -34,6 +34,7 @@ export default function ModalForm({
                 id="name"
                 className="form-control"
                 onChange={handleChange}
+                value={form.name}
               />
               {errors.name && <div className="text-danger">{errors.name}</div>}
             </div>
@@ -45,6 +46,7 @@ export default function ModalForm({
                 id="nim"
                 className="form-control"
                 onChange={handleChange}
+                value={form.nim}
               />
               {errors.nim && <div className="text-danger">{errors.nim}</div>}
             </div>
@@ -56,6 +58,7 @@ export default function ModalForm({
                 id="class"
                 className="form-control"
                 onChange={handleChange}
+                value={form.class}
               />
               {errors.class && (
                 <div className="text-danger">{errors.class}</div>
@@ -68,6 +71,7 @@ export default function ModalForm({
                 name="gender"
                 id="gender"
                 onChange={handleChange}
+                value={form.gender}
               >
                 <option defaultValue="0">Select Gender</option>
                 <option value="male">Male</option>
@@ -85,6 +89,7 @@ export default function ModalForm({
                 id="year"
                 className="form-control"
                 onChange={handleChange}
+                value={form.year}
               />
               {errors.year && <div className="text-danger">{errors.year}</div>}
             </div>
@@ -96,6 +101,7 @@ export default function ModalForm({
                 id="address"
                 className="form-control"
                 onChange={handleChange}
+                value={form.address}
               ></textarea>
               {errors.address && (
                 <div className="text-danger">{errors.address}</div>
@@ -110,6 +116,7 @@ export default function ModalForm({
                 id="birthDate"
                 className="form-control"
                 onChange={handleChange}
+                value={form.birthDate}
               />
               {errors.birthDate && (
                 <div className="text-danger">{errors.birthDate}</div>
@@ -123,6 +130,7 @@ export default function ModalForm({
                 id="guardian_name"
                 className="form-control"
                 onChange={handleChange}
+                value={form.guardian_name}
               />
               {errors.guardian_name && (
                 <div className="text-danger">{errors.guardian_name}</div>
@@ -132,7 +140,11 @@ export default function ModalForm({
         </div>
         <div className="modal-footer">
           {isEdit ? (
-            <button type="button" className="btn btn-warning">
+            <button
+              type="button"
+              className="btn btn-warning"
+              onClick={handleSubmit}
+            >
               <i className="bi bi-pencil-square"></i> Update
             </button>
           ) : (

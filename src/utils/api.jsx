@@ -21,8 +21,28 @@ export const addSiswa = async (data) => {
   return res.data;
 };
 
-export const updateSiswa = async (id, data) => {
+export const updateSiswa = async (data, id) => {
   const res = await axios.put(`${API_URL}/students/${id}`, data, {
+    headers: {
+      "Content-Type": "application/json",
+      "api-key": "RJS1-202407",
+    },
+  });
+  return res.data;
+};
+
+export const getSiswaById = async (id) => {
+  const res = await axios.get(`${API_URL}/students/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      "api-key": "RJS1-202407",
+    },
+  });
+  return res.data;
+};
+
+export const deleteSiswa = async (id) => {
+  const res = await axios.delete(`${API_URL}/students/${id}`, {
     headers: {
       "Content-Type": "application/json",
       "api-key": "RJS1-202407",
